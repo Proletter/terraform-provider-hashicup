@@ -1,12 +1,12 @@
 // Copyright (c) HashiCorp, Inc.
 // SPDX-License-Identifier: MPL-2.0
 
-package hashicups
+package hashicup
 
 import (
 	"context"
 
-	"github.com/hashicorp-demoapp/hashicups-client-go"
+	"github.com/hashicorp-demoapp/hashicup-client-go"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
@@ -18,27 +18,27 @@ func Provider() *schema.Provider {
 			"host": &schema.Schema{
 				Type:        schema.TypeString,
 				Optional:    true,
-				DefaultFunc: schema.EnvDefaultFunc("HASHICUPS_HOST", nil),
+				DefaultFunc: schema.EnvDefaultFunc("hashicup_HOST", nil),
 			},
 			"username": &schema.Schema{
 				Type:        schema.TypeString,
 				Optional:    true,
-				DefaultFunc: schema.EnvDefaultFunc("HASHICUPS_USERNAME", nil),
+				DefaultFunc: schema.EnvDefaultFunc("hashicup_USERNAME", nil),
 			},
 			"password": &schema.Schema{
 				Type:        schema.TypeString,
 				Optional:    true,
 				Sensitive:   true,
-				DefaultFunc: schema.EnvDefaultFunc("HASHICUPS_PASSWORD", nil),
+				DefaultFunc: schema.EnvDefaultFunc("hashicup_PASSWORD", nil),
 			},
 		},
 		ResourcesMap: map[string]*schema.Resource{
-			"hashicups_order": resourceOrder(),
+			"hashicup_order": resourceOrder(),
 		},
 		DataSourcesMap: map[string]*schema.Resource{
-			"hashicups_coffees":     dataSourceCoffees(),
-			"hashicups_order":       dataSourceOrder(),
-			"hashicups_ingredients": dataSourceIngredients(),
+			"hashicup_coffees":     dataSourceCoffees(),
+			"hashicup_order":       dataSourceOrder(),
+			"hashicup_ingredients": dataSourceIngredients(),
 		},
 		ConfigureContextFunc: providerConfigure,
 	}
@@ -60,12 +60,12 @@ func providerConfigure(ctx context.Context, d *schema.ResourceData) (interface{}
 	var diags diag.Diagnostics
 
 	if (username != "") && (password != "") {
-		c, err := hashicups.NewClient(host, &username, &password)
+		c, err := hashicup.NewClient(host, &username, &password)
 		if err != nil {
 			diags = append(diags, diag.Diagnostic{
 				Severity: diag.Error,
-				Summary:  "Unable to create HashiCups client",
-				Detail:   "Unable to authenticate user for authenticated HashiCups client",
+				Summary:  "Unable to create hashicup client",
+				Detail:   "Unable to authenticate user for authenticated hashicup client",
 			})
 
 			return nil, diags
@@ -74,12 +74,12 @@ func providerConfigure(ctx context.Context, d *schema.ResourceData) (interface{}
 		return c, diags
 	}
 
-	c, err := hashicups.NewClient(host, nil, nil)
+	c, err := hashicup.NewClient(host, nil, nil)
 	if err != nil {
 		diags = append(diags, diag.Diagnostic{
 			Severity: diag.Error,
-			Summary:  "Unable to create HashiCups client",
-			Detail:   "Unable to create anonymous HashiCups client",
+			Summary:  "Unable to create hashicup client",
+			Detail:   "Unable to create anonymous hashicup client",
 		})
 		return nil, diags
 	}

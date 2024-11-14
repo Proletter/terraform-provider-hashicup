@@ -1,41 +1,41 @@
 // Copyright (c) HashiCorp, Inc.
 // SPDX-License-Identifier: MPL-2.0
 
-package hashicups
+package hashicup
 
 import (
 	"fmt"
 	"testing"
 
-	hc "github.com/hashicorp-demoapp/hashicups-client-go"
+	hc "github.com/hashicorp-demoapp/hashicup-client-go"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
 )
 
-func TestAccHashicupsOrderBasic(t *testing.T) {
+func TestAcchashicupOrderBasic(t *testing.T) {
 	coffeeID := "1"
 	quantity := "2"
 
 	resource.Test(t, resource.TestCase{
 		PreCheck:     func() { testAccPreCheck(t) },
 		Providers:    testAccProviders,
-		CheckDestroy: testAccCheckHashicupsOrderDestroy,
+		CheckDestroy: testAccCheckhashicupOrderDestroy,
 		Steps: []resource.TestStep{
 			{
-				Config: testAccCheckHashicupsOrderConfigBasic(coffeeID, quantity),
+				Config: testAccCheckhashicupOrderConfigBasic(coffeeID, quantity),
 				Check: resource.ComposeTestCheckFunc(
-					testAccCheckHashicupsOrderExists("hashicups_order.new"),
+					testAccCheckhashicupOrderExists("hashicup_order.new"),
 				),
 			},
 		},
 	})
 }
 
-func testAccCheckHashicupsOrderDestroy(s *terraform.State) error {
+func testAccCheckhashicupOrderDestroy(s *terraform.State) error {
 	c := testAccProvider.Meta().(*hc.Client)
 
 	for _, rs := range s.RootModule().Resources {
-		if rs.Type != "hashicups_order" {
+		if rs.Type != "hashicup_order" {
 			continue
 		}
 
@@ -50,9 +50,9 @@ func testAccCheckHashicupsOrderDestroy(s *terraform.State) error {
 	return nil
 }
 
-func testAccCheckHashicupsOrderConfigBasic(coffeeID, quantity string) string {
+func testAccCheckhashicupOrderConfigBasic(coffeeID, quantity string) string {
 	return fmt.Sprintf(`
-	resource "hashicups_order" "new" {
+	resource "hashicup_order" "new" {
 		items {
 			coffee {
 				id = %s
@@ -63,7 +63,7 @@ func testAccCheckHashicupsOrderConfigBasic(coffeeID, quantity string) string {
 	`, coffeeID, quantity)
 }
 
-func testAccCheckHashicupsOrderExists(n string) resource.TestCheckFunc {
+func testAccCheckhashicupOrderExists(n string) resource.TestCheckFunc {
 	return func(s *terraform.State) error {
 		rs, ok := s.RootModule().Resources[n]
 

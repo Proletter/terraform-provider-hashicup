@@ -3,14 +3,14 @@
 
 terraform {
   required_providers {
-    hashicups = {
-      versions = "0.3.1"
-      source = "hashicorp.com/edu/hashicups"
+    hashicup = {
+      versions = "0.3.4"
+      source = "hashicorp.com/Proletter/hashicup"
     }
   }
 }
 
-provider "hashicups" {
+provider "hashicup" {
   username = "education"
   password = "test123"
 }
@@ -25,15 +25,15 @@ output "psl" {
   value = module.psl.coffee
 }
 
-data "hashicups_order" "order" {
+data "hashicup_order" "order" {
   id = 1
 }
 
 output "order" {
-  value = data.hashicups_order.order
+  value = data.hashicup_order.order
 }
 
-resource "hashicups_order" "edu" {
+resource "hashicup_order" "edu" {
   items {
     coffee {
       id = 3
@@ -49,14 +49,14 @@ resource "hashicups_order" "edu" {
 }
 
 output "edu_order" {
-  value = hashicups_order.edu
+  value = hashicup_order.edu
 }
 
 
-data "hashicups_order" "first" {
+data "hashicup_order" "first" {
   id = 1
 }
 
 output "first_order" {
-  value = data.hashicups_order.first
+  value = data.hashicup_order.first
 }

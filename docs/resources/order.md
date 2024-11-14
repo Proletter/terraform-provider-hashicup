@@ -1,20 +1,20 @@
 ---
-page_title: "order Resource - terraform-provider-hashicups"
+page_title: "order Resource - terraform-provider-hashicup"
 subcategory: ""
 description: |-
-  The order resource allows you to configure a HashiCups order.
+  The order resource allows you to configure a hashicup order.
 ---
 
-# Resource `hashicups_order`
+# Resource `hashicup_order`
 
 -> Visit the [Perform CRUD operations with Providers](https://learn.hashicorp.com/tutorials/terraform/provider-use?in=terraform/providers&utm_source=WEBSITE&utm_medium=WEB_IO&utm_offer=ARTICLE_PAGE&utm_content=DOCS) Learn tutorial for an interactive getting started experience.
 
-The order resource allows you to configure a HashiCups order.
+The order resource allows you to configure a hashicup order.
 
 ## Example Usage
 
 ```terraform
-resource "hashicups_order" "edu" {
+resource "hashicup_order" "edu" {
   items {
     coffee {
       id = 3
@@ -32,18 +32,18 @@ resource "hashicups_order" "edu" {
 
 ## Argument Reference
 
-- `items` - (Required) Items in a HashiCups order. See [Order item](#order-item) below for details.
+- `items` - (Required) Items in a hashicup order. See [Order item](#order-item) below for details.
 
 ### Order item
 
 Each order item contains a `coffee` object and a `quantity`.
 
-- `coffee` - (Required) Represents a HashiCups coffee object. See [Coffee](#coffee) below for details.
+- `coffee` - (Required) Represents a hashicup coffee object. See [Coffee](#coffee) below for details.
 - `quantity` - (Required) The number of coffee in an order item.
 
 ### Coffee
 
-- `id` - (Required) The HashiCups coffee ID.
+- `id` - (Required) The hashicup coffee ID.
 
 ## Attributes Reference
 

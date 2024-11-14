@@ -3,20 +3,20 @@
 
 terraform {
   required_providers {
-    hashicups = {
-      version = "0.3.1"
-      source  = "hashicorp.com/edu/hashicups"
+    hashicup = {
+      version = "0.3.4"
+      source  = "hashicorp.com/Proletter/hashicup"
     }
   }
 }
 
-provider "hashicups" {
+provider "hashicup" {
   username = "education"
   password = "test123"
 }
 
-resource "hashicups_order" "sample" {}
+resource "hashicup_order" "sample" {}
 
 output "sample_order" {
-  value = hashicups_order.sample
+  value = hashicup_order.sample
 }

@@ -1,18 +1,18 @@
 ---
-page_title: "coffee Data Source - terraform-provider-hashicups"
+page_title: "coffee Data Source - terraform-provider-hashicup"
 subcategory: ""
 description: |-
-  The coffee data source allows you to retrieve information all available HashiCups coffees.
+  The coffee data source allows you to retrieve information all available hashicup coffees.
 ---
 
 # Data Source `coffee`
 
-The coffee data source allows you to retrieve information all available HashiCups coffees.
+The coffee data source allows you to retrieve information all available hashicup coffees.
 
 ## Example Usage
 
 ```terraform
-data "hashicups_coffees" "all" {}
+data "hashicup_coffees" "all" {}
 
 ```
 
@@ -20,7 +20,7 @@ data "hashicups_coffees" "all" {}
 
 The following attributes are exported.
 
-- `coffees` - A list of HashiCups coffee objects. See [Coffee](#coffee) below for details.
+- `coffees` - A list of hashicup coffee objects. See [Coffee](#coffee) below for details.
 
 ### Coffee
 

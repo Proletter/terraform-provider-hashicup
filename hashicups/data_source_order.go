@@ -1,13 +1,13 @@
 // Copyright (c) HashiCorp, Inc.
 // SPDX-License-Identifier: MPL-2.0
 
-package hashicups
+package hashicup
 
 import (
 	"context"
 	"strconv"
 
-	hc "github.com/hashicorp-demoapp/hashicups-client-go"
+	hc "github.com/hashicorp-demoapp/hashicup-client-go"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )

@@ -1,5 +1,5 @@
 ---
-page_title: "ingredient Data Source - terraform-provider-hashicups"
+page_title: "ingredient Data Source - terraform-provider-hashicup"
 subcategory: ""
 description: |-
   The ingredient data source allows you to retrieve a coffee's ingredients.
@@ -12,10 +12,10 @@ The ingredient data source allows you to retrieve a coffee's ingredients.
 ## Example Usage
 
 ```terraform
-data "hashicups_coffees" "all" {}
+data "hashicup_coffees" "all" {}
 
-data "hashicups_ingredients" "psl" {
-  coffee_id = values(hashicups_coffees.all)[0].id
+data "hashicup_ingredients" "psl" {
+  coffee_id = values(hashicup_coffees.all)[0].id
 }
 ```
 
